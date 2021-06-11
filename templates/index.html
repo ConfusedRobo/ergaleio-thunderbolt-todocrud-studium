@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
 {% block head %}
-    <title>Task Master | Home Page</title>
+    <title>Studi♔m | Home</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for(endpoint="static", filename="css/index-style.css") }}"/>
 {% endblock %}
 
@@ -11,36 +14,30 @@
         {% if tasks|length < 1 %}
             <h4>There aren't any tasks. Create one below!</h4>
         {% else %}
-            <table>
-                <thead>
-                <tr>
-                    <th>Task</th>
-                    <th>Added</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-
-                <tbody>
-                {% for task in tasks %}
-                    <tr>
-                        <td>{{ task.content }}</td>
-                        <td>{{ task.created.date() }}</td>
-                        <td>
-                            <a href="/delete/{{ task.identity }}">Delete</a>
-                            <br/>
-                            <a href="/update/{{ task.identity }}">Update</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+            {% for task in tasks %}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ task.gist }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ task.created.date() }}</h6>
+                        <p class="card-text">{{ task.details }}</p>
+                        <a href="/edit/{{ task.identity }}" class="card-link">Update</a>
+                        <a href="/delete/{{ task.identity }}" class="card-link">Delete</a>
+                    </div>
+                </div>
+            {% endfor %}
         {% endif %}
 
         <form action="/" method="post">
-            <label for="content">Task </label>
-            <input type="text" name="content" id="content"/>
-
-            <input id="submit" type="submit" value="Add Task"/>
+            <div class="mb-3">
+                <label for="gist" class="form-label">Task Gist</label>
+                <input type="text" class="form-control" id="gist" name="gist" placeholder="Doctor's Appointment">
+            </div>
+            <div class="mb-3">
+                <label for="details" class="form-label">Details</label>
+                <textarea class="form-control" id="details" rows="3" name="details"
+                          placeholder="Commute to Milan Pharmacy for attending Dr. M. Sullivan's appointment regarding diet."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Add</button>
         </form>
     </div>
 {% endblock %}
