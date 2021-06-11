@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Task Master | Home Page</title>
+    <link rel="stylesheet" href="{{ url_for(endpoint="static", filename="css/index-style.css") }}"/>
+{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h1>Task Master</h1>
+        {% if tasks|length < 1 %}
+            <h4>There aren't any tasks. Create one below!</h4>
+        {% else %}
+            <table>
+                <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Added</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for task in tasks %}
+                    <tr>
+                        <td>{{ task.content }}</td>
+                        <td>{{ task.created.date() }}</td>
+                        <td>
+                            <a href="/delete/{{ task.identity }}">Delete</a>
+                            <br/>
+                            <a href="/update/{{ task.identity }}">Update</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+
+        <form action="/" method="post">
+            <label for="content">Task </label>
+            <input type="text" name="content" id="content"/>
+
+            <input id="submit" type="submit" value="Add Task"/>
+        </form>
+    </div>
+{% endblock %}
