@@ -5,6 +5,10 @@
     font-family: "PT Sans", sans-serif;
 }
 
+body {
+    background-color: antiquewhite;
+}
+
 #logo {
     width: 5rem;
 }
@@ -22,15 +26,24 @@
 
 .content {
     display: flex;
+    margin-left: 8%;
+    margin-bottom: 5%;
 }
 
 .card {
-    margin: 20px;
-    background: linear-gradient(aliceblue, ghostwhite);
-    border-color: aqua;
+    margin: 1rem;
+    background: #f8de9d;
+    border-color: #fff186;
     border-left-width: thick;
-    border-left-color: mediumaquamarine;
+    border-left-color: #e0b515;
     background-blend-mode: overlay;
+    color: #1a1818;
+    border-radius: 2rem;
+}
+
+.card:hover {
+    transition-duration: 1s;
+    box-shadow: 8px 10px 50px 4px rgba(0, 0, 0, 0.53);
 }
 
 .card-title {
@@ -47,12 +60,23 @@
 }
 
 form {
-    background: linear-gradient(aliceblue, ghostwhite);
-    padding: 8rem;
+    padding: 5% 10%;
+    background-color: #ffe5a5;
 }
 
 .sub-btn {
-    margin-left: 42%;
-    width: 15rem;
+    margin-left: 40%;
+    width: 18rem;
+    font-size: xx-large;
     font-weight: bold;
+    height: 5rem;
+}
+
+.button-yellow {
+    background-color: #e0b515;
+    border-color: #e0b515;
+}
+
+textarea {
+    height: 20rem;
 }

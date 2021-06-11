@@ -24,7 +24,7 @@
                         <h6 class="card-subtitle mb-2 text-muted">{{ task.created.date() }}</h6>
                         <p class="card-text">{{ task.details }}</p>
                         <div align="center" class="d-grid gap-2 d-md-block">
-                            <a href="/edit/{{ task.identity }}" class="btn btn-primary edit-btn">Edit</a>
+                            <a href="/edit/{{ task.identity }}" class="btn btn-primary edit-btn button-yellow">Edit</a>
                             <a href="/delete/{{ task.identity }}" class="btn btn-secondary del-btn">Delete</a>
                         </div>
                     </div>
@@ -35,11 +35,11 @@
 
     <form action="/" method="post">
         <div class="mb-3">
-            <label for="gist" class="form-label">Task Gist</label>
+            <!--suppress HtmlFormInputWithoutLabel -->
             <input type="text" class="form-control" id="gist" name="gist" placeholder="Doctor's Appointment">
         </div>
         <div class="mb-3">
-            <label for="details" class="form-label">Details</label>
+            <!--suppress HtmlFormInputWithoutLabel -->
             <textarea class="form-control" id="details" rows="3" name="details"
                       placeholder="Commute to Milan Pharmacy for attending Dr. M. Sullivan's appointment regarding diet."></textarea>
         </div>
